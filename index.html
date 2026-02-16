@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos | Sistema</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo!</h1>
+        <p class="subtitulo">Escolha o horário desejado para agendar</p>
+
+        <div class="semana-botoes">
+            <button onclick="mudarSemana(0)" class="btn-semana">Semana Atual</button>
+            <button onclick="mudarSemana(1)" class="btn-semana">Semana 1</button>
+            <button onclick="mudarSemana(2)" class="btn-semana">Semana 2</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dia</th>
+                        <th>Data</th>
+                        <th>Horário</th>
+                        <th>Situação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
