@@ -10,16 +10,17 @@ function mudarSemana(numero) {
 
 function formatarDiaSemana(dataString) {
     const data = new Date(dataString);
-    const dias = [
-        "Domingo", "Segunda", "Terça", "Quarta",
-        "Quinta", "Sexta", "Sábado"
-    ];
-    return dias[data.getDay()];
+    return data.toLocaleDateString("pt-BR", {
+        weekday: "long",
+        timeZone: "UTC"
+    });
 }
 
 function formatarData(dataString) {
     const data = new Date(dataString);
-    return data.toLocaleDateString("pt-BR");
+    return data.toLocaleDateString("pt-BR", {
+        timeZone: "UTC"
+    });
 }
 
 async function carregarAgendamentos() {
@@ -35,7 +36,7 @@ async function carregarAgendamentos() {
             const dataFormatada = formatarData(ag.data);
 
             tr.innerHTML = `
-                <td>${diaSemana}</td>
+                <td style="text-transform: capitalize;">${diaSemana}</td>
                 <td>${dataFormatada}</td>
                 <td>${ag.horario}</td>
                 <td>
