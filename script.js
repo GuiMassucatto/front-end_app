@@ -51,7 +51,7 @@ async function carregarAgendamentos() {
                             <button onclick="liberar(${ag.id})" class="btn-liberar">Liberar</button>
                           `
                         : `
-                            <input type="text" placeholder="Seu nome" id="nome-${ag.id}">
+                            <input type="text" placeholder="Professor/série" id="nome-${ag.id}">
                             <button onclick="reservar(${ag.id})" class="btn-reservar">Reservar</button>
                           `
                     }

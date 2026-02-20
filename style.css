@@ -37,20 +37,19 @@ header h1 {
 .logo {
     position: absolute;
     top: 10px;
-    width: 95px;
     height: auto;
     object-fit: contain;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .logo-esquerda {
-    left: 0;
-    border-radius: 10%;
+    left: -90px;
+    width: 155px;
 }
 
 .logo-direita {
-    right: 0;
-    border-radius: 10%;
+    right: -90px;
+    width: 85px;
 }
 
 .logo:hover {
@@ -196,9 +195,27 @@ button {
     transform: translateY(-2px);
 }
 
+@media (max-width: 1200px) {
+    .logo-esquerda {
+        left: -40px;
+    }
+
+    .logo-direita {
+        right: -40px;
+    }
+}
+
 @media (max-width: 900px) {
     .logo {
         width: 70px;
+    }
+
+    .logo-esquerda {
+        left: -10px;
+    }
+
+    .logo-direita {
+        right: -10px;
     }
 
     header h1 {
@@ -226,8 +243,17 @@ button {
 
 @media (max-width: 600px) {
     .logo {
-        width: 55px;
         top: 5px;
+    }
+
+    .logo-esquerda {
+        left: 0;
+        width: 95px;
+    }
+
+    .logo-direita {
+        right: 0;
+        width: 55px;
     }
 
     header {
