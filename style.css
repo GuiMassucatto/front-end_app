@@ -241,6 +241,20 @@ button {
     }
 }
 
+.btn-excluir {
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-excluir:hover {
+    background-color: #b71c1c;
+}
+
 @media (max-width: 600px) {
     .logo {
         top: 5px;

@@ -49,11 +49,13 @@ async function carregarAgendamentos() {
                         ? `
                             <div style="margin-bottom: 0.5rem; font-weight:600;">${ag.nome}</div>
                             <button onclick="liberar(${ag.id})" class="btn-liberar">Liberar</button>
-                          `
+                            <button onclick="deletar(${ag.id})" class="btn-excluir">Excluir</button>
+                        `
                         : `
                             <input type="text" placeholder="Professor/série" id="nome-${ag.id}">
                             <button onclick="reservar(${ag.id})" class="btn-reservar">Reservar</button>
-                          `
+                            <button onclick="deletar(${ag.id})" class="btn-excluir">Excluir</button>
+                        `
                     }
                 </td>
             `;
@@ -108,6 +110,20 @@ async function liberar(id) {
         carregarAgendamentos();
     } catch (error) {
         alert("Erro ao liberar.");
+    }
+}
+
+async function deletar(id) {
+    if (!confirm("Tem certeza que deseja EXCLUIR este horário? Essa ação não pode ser desfeita.")) return;
+
+    try {
+        await fetch(`${API_URL}/${id}`, {
+            method: "DELETE"
+        });
+
+        carregarAgendamentos();
+    } catch (error) {
+        alert("Erro ao excluir horário.");
     }
 }
 
