@@ -32,6 +32,7 @@ async function carregarAgendamentos() {
 
         agendamentos.forEach(ag => {
             const tr = document.createElement("tr");
+
             const diaSemana = formatarDiaSemana(ag.data);
             const dataFormatada = formatarData(ag.data);
 
@@ -45,17 +46,29 @@ async function carregarAgendamentos() {
                     </span>
                 </td>
                 <td>
-                    ${ag.ocupado
-                        ? `
-                            <div style="margin-bottom: 0.5rem; font-weight:600;">${ag.nome}</div>
-                            <button onclick="liberar(${ag.id})" class="btn-liberar">Liberar</button>
-                            <button onclick="deletar(${ag.id})" class="btn-excluir">Excluir</button>
-                        `
-                        : `
-                            <input type="text" placeholder="Professor/série" id="nome-${ag.id}">
-                            <button onclick="reservar(${ag.id})" class="btn-reservar">Reservar</button>
-                            <button onclick="deletar(${ag.id})" class="btn-excluir">Excluir</button>
-                        `
+                    ${
+                        ag.ocupado
+                            ? `
+                                <div style="margin-bottom: 0.5rem; font-weight:600;">
+                                    ${ag.nome}
+                                </div>
+                                <button onclick="liberar(${ag.id})" class="btn-liberar">
+                                    Liberar
+                                </button>
+                              `
+                            : `
+                                <input 
+                                    type="text" 
+                                    placeholder="Professor/série" 
+                                    id="nome-${ag.id}"
+                                >
+                                <button 
+                                    onclick="reservar(${ag.id})" 
+                                    class="btn-reservar"
+                                >
+                                    Reservar
+                                </button>
+                              `
                     }
                 </td>
             `;
@@ -65,6 +78,7 @@ async function carregarAgendamentos() {
 
     } catch (error) {
         console.error("Erro:", error);
+
         tbody.innerHTML = `
             <tr>
                 <td colspan="5" style="text-align:center;color:red;">
@@ -110,20 +124,6 @@ async function liberar(id) {
         carregarAgendamentos();
     } catch (error) {
         alert("Erro ao liberar.");
-    }
-}
-
-async function deletar(id) {
-    if (!confirm("Tem certeza que deseja EXCLUIR este horário? Essa ação não pode ser desfeita.")) return;
-
-    try {
-        await fetch(`${API_URL}/${id}`, {
-            method: "DELETE"
-        });
-
-        carregarAgendamentos();
-    } catch (error) {
-        alert("Erro ao excluir horário.");
     }
 }
 
